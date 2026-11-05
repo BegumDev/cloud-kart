@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,26 +9,34 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
 
         .header {
             background-color: #2c3e50;
             color: white;
-            padding: 25px;
+            padding: 20px 0;
             text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
 
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            text-align: center;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .welcome-text {
+            text-align: center;
+            font-size: 1.2em;
             color: #555;
-            font-size: 18px;
+            margin-top: 50px;
         }
 
         .signup-link {
@@ -39,6 +46,7 @@
             padding: 12px 30px;
             text-decoration: none;
             border-radius: 5px;
+            font-size: 18px;
             margin-top: 20px;
         }
 
@@ -47,28 +55,25 @@
         }
     </style>
 </head>
-
 <body>
 
-    <div class="header">
+<div class="header">
+    <div class="container">
         <h1>MyShop</h1>
         <p>Your one-stop destination for amazing products</p>
     </div>
+</div>
 
-    <div class="container">
-        <div class="welcome-text">
-            <h2>Welcome to MyShop</h2>
+<div class="container">
+    <div class="welcome-text">
+        <h2>Welcome to MyShop</h2>
+        <p>Join our community today to access exclusive deals and features!</p>
 
-            <p>
-                Join our community today to access
-                exclusive deals and features!
-            </p>
-
-            <a href="register.php" class="signup-link">
-                Create Your Account
-            </a>
-        </div>
+        <a href="register.php" class="signup-link">
+            Create Your Account
+        </a>
     </div>
+</div>
 
 </body>
 </html>

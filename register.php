@@ -1,8 +1,3 @@
-
-<?php
-$error = $_GET['error'] ?? '';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +12,18 @@ $error = $_GET['error'] ?? '';
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
         }
 
         .register-form {
@@ -26,13 +31,9 @@ $error = $_GET['error'] ?? '';
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 90%;
+            width: 100%;
             max-width: 400px;
-        }
-
-        .header {
-            text-align: center;
-            color: #2c3e50;
+            margin-top: 60px;
         }
 
         .form-group {
@@ -58,7 +59,7 @@ $error = $_GET['error'] ?? '';
         .btn {
             background-color: #007bff;
             color: white;
-            padding: 12px;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -71,83 +72,61 @@ $error = $_GET['error'] ?? '';
         }
 
         .error {
-            color: #721c24;
+            color: red;
             padding: 10px;
-            margin-bottom: 15px;
+            margin: 10px 0;
             background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
             border-radius: 4px;
             text-align: center;
-        }
-
-        a {
-            color: #007bff;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="register-form">
+<div class="header">
+    <h1>MyShop</h1>
+    <p>Create Your Account</p>
+</div>
 
-        <div class="header">
-            <h1>MyShop</h1>
-            <p>Create Your Account</p>
+<div class="register-form">
+    <h2>Register</h2>
+
+    <?php if (isset($_GET['error'])): ?>
+        <div class="error">
+            <?php echo htmlspecialchars($_GET['error']); ?>
+        </div>
+    <?php endif; ?>
+
+    <form method="post" action="process_register.php">
+
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="name" placeholder="Enter your full name" required>
         </div>
 
-        <h2>Register</h2>
+        <div class="form-group">
+            <label>Email *</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
 
-        <?php if (!empty($error)): ?>
-            <div class="error">
-                <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
-            </div>
-        <?php endif; ?>
+        <div class="form-group">
+            <label>Password *</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </div>
 
-        <form method="POST" action="process_register.php">
+        <div class="form-group">
+            <input type="submit" class="btn" value="Register">
+        </div>
 
-            <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    maxlength="100"
-                    required
-                >
-            </div>
+    </form>
 
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    maxlength="255"
-                    required
-                >
-            </div>
+    <p style="text-align: center;">
+        <a href="index.php">Back to Home</a>
+    </p>
 
-            <div class="form-group">
-                <label for="password">Password *</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    minlength="8"
-                    required
-                >
-            </div>
-
-            <button type="submit" class="btn">
-                Register
-            </button>
-
-        </form>
-
-        <p style="text-align:center;">
-            <a href="index.php">Back to Home</a>
-        </p>
-
-    </div>
+</div>
 
 </body>
 </html>
